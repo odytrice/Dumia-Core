@@ -1,0 +1,1 @@
+module Dumia.Domain.Managers
