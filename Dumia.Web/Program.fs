@@ -1,27 +1,24 @@
+﻿namespace Dumia.Web
+
 open System
 open System.Collections.Generic
 open System.IO
 open System.Linq
 open System.Threading.Tasks
 open Microsoft.AspNetCore.Hosting
-open Microsoft.Extensions.Configuration
-open Dumia.Web
 
+module Program =
 
-[<EntryPoint>]
-let main argv =    
-    let config = ConfigurationBuilder()
-                    .AddCommandLine(argv)
-                    .AddEnvironmentVariables("ASPNETCORE_")
-                    .Build()
+    [<EntryPoint>]
+    let main args =
+        let host = 
+            WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build()
 
-    let host = WebHostBuilder()
-                    .UseConfiguration(config)
-                    .UseKestrel()
-                    .UseContentRoot(Directory.GetCurrentDirectory())
-                    .UseIISIntegration()
-                    .UseStartup<Startup>()
-                    .Build()
-
-    host.Run()
-    0
+        host.Run()
+        
+        0
