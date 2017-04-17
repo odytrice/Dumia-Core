@@ -1,10 +1,11 @@
-module Dumia.Test.Tests
+namespace Dumia.Test
 
 open System
-open Xunit
+open Microsoft.VisualStudio.TestTools.UnitTesting
 
-let add x y = x + y
+[<TestClass>]
+type TestClass () =
 
-[<Fact>]
-let PassingTest () =
-    Assert.Equal(4, (add 2 2))
+    [<TestMethod>]
+    member this.TestMethodPassing () =
+        Assert.IsTrue(true);
