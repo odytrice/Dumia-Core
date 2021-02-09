@@ -234,3 +234,5 @@ _Pvt_Extensions
 .fake/
 
 Dumia.Web/wwwroot/lib
+
+.ionide
